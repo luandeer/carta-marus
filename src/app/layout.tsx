@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "../styles/globals.css";
+import { Header, NavCategorias, TailwindIndicator } from "@/components";
+import { cn } from "@/lib/utils"
+import ProviderBarraAdmi from "@/context/ProviderBarraAdmi";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +19,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={cn(
+        "bg-background  antialiased min-h-screen flex flex-col",
+        inter.className
+      )}>
+        <Header />
+        <div className="bg-marusColor-fondoClaro flex-1 flex-col">
+          <div className="mt-10 container"><NavCategorias/></div>
+          <div className="container flex-1 py-4 md:py-10"><ProviderBarraAdmi>{children}</ProviderBarraAdmi></div>
+        </div>
+
+
+        <TailwindIndicator />
+      </body>
     </html>
   );
 }
