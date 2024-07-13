@@ -1,7 +1,7 @@
 import { SquarePen } from "lucide-react";
 import { BiSolidDrink } from "react-icons/bi";
-import { GiRoastChicken } from "react-icons/gi";
-import {  LuSalad } from "react-icons/lu";
+import { GiChickenLeg, GiRoastChicken } from "react-icons/gi";
+import {  LuBeef, LuSalad } from "react-icons/lu";
 import { MdOutdoorGrill } from "react-icons/md";
 import { PiChartPieSliceFill } from "react-icons/pi";
 import { RiDrinks2Fill } from "react-icons/ri";
@@ -14,14 +14,24 @@ export function getCategorias():Categoria[] {
     return [
       
       {
-        nombre: "Brasa",
+        nombre: "Brasa Familiar",
         icon: GiRoastChicken,
-        path: "brasa",
+        path: "brasa-familiar",
       },
       {
-        nombre: "Parrillas",
+        nombre: "Brasa Personal",
+        icon: GiChickenLeg,
+        path: "brasa-personal",
+      },
+      {
+        nombre: "Parrilla Familiar",
         icon: MdOutdoorGrill,
-        path: "parrillas",
+        path: "parrilla-familiar",
+      },
+      {
+        nombre: "Parrilla Personal",
+        icon: LuBeef,
+        path: "parrilla-personal",
       },
       {
         nombre: "Ensaladas",

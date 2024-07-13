@@ -26,7 +26,7 @@ export default function RootLayout({
         <Header />
         <div className="bg-marusColor-fondoClaro flex-1 flex-col">
           <div className="mt-10 container"><NavCategorias/></div>
-          <div className="container flex-1 py-4 md:py-10"><ProviderBarraAdmi>{children}</ProviderBarraAdmi></div>
+          <div className="container flex-1 md:pb-10"><ProviderBarraAdmi>{children}</ProviderBarraAdmi></div>
         </div>
 
 
