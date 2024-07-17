@@ -105,7 +105,7 @@ export function DetalleProducto({ dataProducto }: any) {
               <div className="flex items-center gap-2">
                 <GrMoney className="size-4" />
                 <p className="text-sm  text-marusColor-marron dark:text-gray-400">
-                  Mejor Precio
+                  Precio online
                 </p>
               </div>
 

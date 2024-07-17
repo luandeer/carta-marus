@@ -59,7 +59,7 @@ export function Productos({ dataProductos, path }: any) {
               <Image
                   src={producto.imagenes?.[0]?.urls?.[0]}
                   alt={producto.nombre}
-                  className=" rounded-t-2xl w-auto transition-transform duration-300 ease-in-out group-hover:scale-105"
+                  className="rounded-t-2xl w-auto transition-transform duration-300 ease-in-out group-hover:scale-105"
                   width="200"
                   height="200"
                   loading="lazy"
