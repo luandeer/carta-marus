@@ -4,6 +4,7 @@ import "../styles/globals.css";
 import { Header, NavCategorias, TailwindIndicator } from "@/components";
 import { cn } from "@/lib/utils"
 import ProviderBarraAdmi from "@/context/ProviderBarraAdmi";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,12 +26,13 @@ export default function RootLayout({
       )}>
         <Header />
         <div className="bg-marusColor-fondoClaro flex-1 flex-col">
-          <div className="mt-10 container"><NavCategorias/></div>
-          <div className="container flex-1 md:pb-10"><ProviderBarraAdmi>{children}</ProviderBarraAdmi></div>
+          <div className="mt-10 container px-4 xl:px-2"><NavCategorias/></div>
+          <div className="container flex-1 md:pb-10 px-4 xl:px-2"><ProviderBarraAdmi>{children}</ProviderBarraAdmi></div>
         </div>
 
 
         <TailwindIndicator />
+        <Toaster richColors closeButton/>
       </body>
     </html>
   );

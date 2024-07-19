@@ -39,10 +39,10 @@ export function Productos({ dataProductos, path }: any) {
           </BreadcrumbList>
         </Breadcrumb>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-3 gap-y-3">
+      <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-2 gap-y-3">
         {dataProductos.map((producto: any) => {
           return(
-            <div key={producto.id} className=" relative max-w-full ">
+            <article key={producto.id} className=" relative max-w-full ">
               <div className="absolute top-2 left-2 flex gap-1 z-10">
                 <div className="bg-marusColor-anaranjado text-white px-2 py-1 text-xs font-bold rounded-br-lg  rounded-tl-lg hidden">
                   20% dscto.
@@ -59,7 +59,7 @@ export function Productos({ dataProductos, path }: any) {
               <Image
                   src={producto.imagenes?.[0]?.urls?.[0]}
                   alt={producto.nombre}
-                  className="rounded-t-2xl w-auto transition-transform duration-300 ease-in-out group-hover:scale-105"
+                  className="w-auto transition-transform duration-300 ease-in-out group-hover:scale-105 object-center object-cover"
                   width="200"
                   height="200"
                   loading="lazy"
@@ -112,10 +112,10 @@ export function Productos({ dataProductos, path }: any) {
               >
                 Ver Producto
               </Link>
-            </div>
+            </article>
           )
         })}
-      </div>
+      </section>
     </>
   );
 }
