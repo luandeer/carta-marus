@@ -17,7 +17,7 @@ export function Buscador() {
         <Dialog >
             <DialogTrigger asChild>
                 <Button className="bg-marusColor-fondoClaro flex items-center justify-between gap-2 px-2.5  hover:bg-marusColor-fondoClaro/20 h-0 py-3 rounded-lg text-xs font-normal">
-                    ¿Qué se te antoja?...  <SearchIcon className="h-3 w-3" />
+                <SearchIcon className="h-3 w-3" /> ¿Qué se te antoja?...  
                 </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[400px] min-h-40 p-0 top-[20%] " >

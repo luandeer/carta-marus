@@ -38,7 +38,7 @@ export function DetalleProducto({ dataProducto }: any) {
 
   return (
     <section>
-      <div className="flex items-center justify-between bg-marusColor-marron text-marusColor-letras px-4 rounded-xl mb-4">
+      <div className="flex items-center justify-between  text-marusColor-marron  rounded-xl mb-2">
         <BotonRegresar />
         <Breadcrumb className="hidden sm:block">
           <BreadcrumbList>
@@ -46,34 +46,35 @@ export function DetalleProducto({ dataProducto }: any) {
               <BreadcrumbLink asChild>
                 <Link
                   href="/"
-                  className="text-marusColor-letras hover:text-white "
+                  className="text-marusColor-marron hover:text-yellow-900 "
                 >
                   <FaHome size={14} />
                 </Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbSeparator className="text-marusColor-letras" />
+            <BreadcrumbSeparator className="text-marusColor-marron" />
 
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
                 <Link
                   href={`/categoria/${dataProducto.categoria}`}
-                  className="text-marusColor-letras hover:text-white text-xs"
+                  className="text-marusColor-marron hover:text-yellow-900 text-xs capitalize"
                 >
                   {dataProducto.categoria}
                 </Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
 
-            <BreadcrumbSeparator className="text-marusColor-letras" />
+            <BreadcrumbSeparator className="text-marusColor-marron" />
             <BreadcrumbItem>
-              <BreadcrumbPage className="text-marusColor-letras font-semibold text-xs">
+              <BreadcrumbPage className="text-marusColor-marron font-semibold text-xs">
                 {dataProducto.nombre}
               </BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
       </div>
+      
 
       <div className=" mx-auto">
         <div className="lg:grid lg:grid-cols-2 gap-8">
@@ -181,7 +182,7 @@ export function DetalleProducto({ dataProducto }: any) {
                 className="flex items-center justify-center h-9 w-full px-5 text-sm font-medium text-marusColor-letras focus:outline-none bg-marusColor-rojo rounded-xl border border-gray-200 hover:bg-marusColor-rojo hover:text-primary-700 focus:z-10 "
                 onClick={() => handleAddToCart(dataProducto)}
               >
-                {itemLoading === "add"? <span className=" flex justify-center items-center   text-white w-full transition ease-in duration-200 text-center">
+                {itemLoading === "add" ? <span className=" flex justify-center items-center   text-white w-full transition ease-in duration-200 text-center">
                   <svg width="18" height="18" fill="currentColor" className="mr-2 animate-spin" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                     <path d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z">
                     </path>
@@ -193,18 +194,18 @@ export function DetalleProducto({ dataProducto }: any) {
               </Button>
             </div>
 
-            <Separator className="my-6  bg-marusColor-marron" />
+            {dataProducto.descripcion && (<>
+              <Separator className="my-6  bg-marusColor-marron" />
 
-            <h1 className="text-lg font-semibold mb-2">¿Qué incluye este producto?</h1>
-            <p className="mb-6 text-marusColor-marron dark:text-gray-400">
-              {dataProducto.descripcion}
-            </p>
+              <h1 className="text-lg font-semibold mb-2">¿Qué incluye este producto?</h1>
+              <p className="mb-6 text-marusColor-marron dark:text-gray-400">
+                {dataProducto.descripcion}
+              </p>
 
-            <p className="text-marusColor-marron dark:text-gray-400 hidden">
-              Two Thunderbolt USB 4 ports and up to two USB 3 ports. Ultrafast
-              Wi-Fi 6 and Bluetooth 5.0 wireless. Color matched Magic Mouse with
-              Magic Keyboard or Magic Keyboard with Touch ID.
-            </p>
+            </>)}
+
+
+
           </div>
         </div>
       </div>

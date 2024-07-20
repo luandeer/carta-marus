@@ -8,13 +8,12 @@ import {
 
 import { getCategorias } from "@/config/categorias";
 import { ActivarLinkCategoria } from "./active-link-categoria";
-import { Separator } from "../ui/separator";
+
 export function NavCategorias() {
   //obteniendo categorias
   const menuCategorias = getCategorias();
   return (
-    <div className="flex-col mb-4">
-      <h1 className="text-2xl lg:text-3xl font-bold text-marusColor-marron dark:text-gray-50 mb-5 hidden">Carta {`Maru's`}</h1>
+    <div className="py-3 container px-4 xl:px-2">
       <div>
         <Carousel
           opts={{
