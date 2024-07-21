@@ -37,7 +37,7 @@ export function DetalleProducto({ dataProducto }: any) {
   };
 
   return (
-    <section>
+    <section className="container px-2 pt-3">
       <div className="flex items-center justify-between  text-marusColor-marron  rounded-xl mb-2">
         <BotonRegresar />
         <Breadcrumb className="hidden sm:block">

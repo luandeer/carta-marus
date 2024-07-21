@@ -32,6 +32,14 @@ type CarouselContextProps = {
 
 const CarouselContext = React.createContext<CarouselContextProps | null>(null)
 
+interface CarouselPreviousProps extends React.ComponentProps<typeof Button> {
+  icon: React.ReactNode;
+}
+// Definir las propiedades que acepta CarouselNext, incluyendo el icono
+interface CarouselNextProps extends React.ComponentProps<typeof Button> {
+  icon: React.ReactNode;
+}
+
 function useCarousel() {
   const context = React.useContext(CarouselContext)
 
@@ -196,37 +204,37 @@ CarouselItem.displayName = "CarouselItem"
 
 const CarouselPrevious = React.forwardRef<
   HTMLButtonElement,
-  React.ComponentProps<typeof Button>
->(({ className, variant = "outline", size = "icon", ...props }, ref) => {
+   CarouselPreviousProps
+>(({ className, variant = "outline", size = "icon", icon, ...props }, ref) => {
   const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
   return (
     <Button
-      ref={ref}
-      variant={variant}
-      size={size}
-      className={cn(
-        "absolute  h-8 w-8 rounded-full",
-        orientation === "horizontal"
-          ? "-left-12 top-1/2 -translate-y-1/2"
-          : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
-          !canScrollPrev && "hidden",
-        className
-      )}
-      onClick={scrollPrev}
-      {...props}
-    >
-      <ArrowLeft className="h-4 w-4" />
-      <span className="sr-only">Previous slide</span>
-    </Button>
+    ref={ref}
+    variant={variant}
+    size={size}
+    className={cn(
+      "absolute  h-8 w-8 rounded-full",
+      orientation === "horizontal"
+        ? "-left-12 top-1/2 -translate-y-1/2"
+        : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
+      className
+    )}
+    disabled={!canScrollPrev}
+    onClick={scrollPrev}
+    {...props}
+  >
+    {icon}
+    <span className="sr-only">Previous slide</span>
+  </Button>
   )
 })
 CarouselPrevious.displayName = "CarouselPrevious"
 
 const CarouselNext = React.forwardRef<
   HTMLButtonElement,
-  React.ComponentProps<typeof Button>
->(({ className, variant = "outline", size = "icon", ...props }, ref) => {
+  CarouselNextProps
+>(({ className, variant = "outline", size = "icon",icon, ...props }, ref) => {
   const { orientation, scrollNext, canScrollNext } = useCarousel()
 
   return (
@@ -239,13 +247,13 @@ const CarouselNext = React.forwardRef<
         orientation === "horizontal"
           ? "-right-12 top-1/2 -translate-y-1/2"
           : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
-          !canScrollNext && "hidden",
         className
       )}
+      disabled={!canScrollNext}
       onClick={scrollNext}
       {...props}
     >
-      <ArrowRight className="h-4 w-4" />
+      {icon}
       <span className="sr-only">Next slide</span>
     </Button>
   )

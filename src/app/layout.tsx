@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
-import { BannerDomicilio, Header, NavCategorias, TailwindIndicator } from "@/components";
+import { BannerDomicilio, Header, TailwindIndicator } from "@/components";
 import { cn } from "@/lib/utils"
 import ProviderBarraAdmi from "@/context/ProviderBarraAdmi";
 import { Toaster } from "@/components/ui/sonner";
@@ -26,10 +26,10 @@ export default function RootLayout({
       )}>
         <BannerDomicilio/>
         <Header />
-        <div className="bg-marusColor-fondoClaro flex-1 flex-col">
+        <div className="bg-marusColor-fondoClaro flex-1">
           
-          <div className="bg-gradient-to-r from-amber-200 to-yellow-400 mb-2 shadow-lg  sticky top-[60px] z-20 border-b-4 border-marusColor-marron"><NavCategorias/></div>
-          <div className="container flex-1 md:pb-10 px-4 xl:px-2"><ProviderBarraAdmi>{children}</ProviderBarraAdmi></div>
+          
+          <div className="md:pb-10"><ProviderBarraAdmi>{children}</ProviderBarraAdmi></div>
         </div>
 
 
