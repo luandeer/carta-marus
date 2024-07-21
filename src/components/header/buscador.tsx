@@ -38,7 +38,7 @@ export function Buscador() {
                 <SearchIcon className="h-3 w-3" /> ¿Qué se te antoja?...
             </Button>
             <CommandDialog open={open} onOpenChange={setOpen}>
-                <CommandInput placeholder="Type a command or search..." />
+                <CommandInput placeholder="Buscar producto..." />
                 <CommandList>
                     <CommandEmpty>No results found.</CommandEmpty>
                     <CommandGroup heading="Suggestions">
