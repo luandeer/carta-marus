@@ -48,10 +48,10 @@ export function Cart() {
       </SheetTrigger>
       <SheetContent
         onCloseAutoFocus={handleCloseAutoFocus}
-        className="w-full"
+        className="w-full bg-[#FAF6ED]"
       >
         <SheetHeader className="items-start text-start">
-          <SheetTitle>Carrito de Compras</SheetTitle>
+          <SheetTitle>Carrito de Compras {cartItems.length > 0 && <span className="size-3  text-marusColor-marron ">({cartItems.length})</span>}</SheetTitle>
           <SheetDescription>
             Aquí puedes revisar y modificar los artículos en tu carrito.
           </SheetDescription>

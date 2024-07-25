@@ -1,12 +1,14 @@
 import Image from "next/image";
 import { Buscador } from "./buscador";
 import { Cart } from "../client/cart";
+import { MenuHeader } from "@/lib/common";
 
 export function Header() {
     return (
         <div className="bg-marusColor-marron border-b-4 border-marusColor-anaranjado sticky top-0 z-40 shadow-md">
             <div className="flex items-center justify-between container relative px-4 xl:px-2">
-                <div className="my-0">
+                <div className="my-0 flex items-center">
+                <MenuHeader/>
                     <Image
                         src="/logoMarus.png"
                         alt="logo de marus"

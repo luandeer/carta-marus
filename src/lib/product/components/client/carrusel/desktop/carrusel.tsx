@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import { Thumb } from './EmblaCarouselThumbsButton'
+import Fade from 'embla-carousel-fade'
 import "@/styles/embla.css"
 import Image from 'next/image'
 type PropType = {
@@ -9,10 +10,10 @@ type PropType = {
   options?: any
 }
 
-const CarruselImagenes: React.FC<PropType> = (props) => {
+export const CarruselImagenes: React.FC<PropType> = (props) => {
   const { slides, options } = props
   const [selectedIndex, setSelectedIndex] = useState(0)
-  const [emblaMainRef, emblaMainApi] = useEmblaCarousel(options)
+  const [emblaMainRef, emblaMainApi] = useEmblaCarousel(options, [Fade()])
   const [emblaThumbsRef, emblaThumbsApi] = useEmblaCarousel({
     containScroll: 'keepSnaps',
     dragFree: true
@@ -77,4 +78,3 @@ const CarruselImagenes: React.FC<PropType> = (props) => {
   )
 }
 
-export default CarruselImagenes
