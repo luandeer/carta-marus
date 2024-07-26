@@ -34,6 +34,11 @@ export function Buscador() {
     return acc;
   }, {});
 
+  const runCommand = React.useCallback((command: () => unknown) => {
+    setOpen(false);
+    //se puede pasar funciones
+    command();
+  }, []);
   return (
     <>
       <Button
@@ -53,11 +58,7 @@ export function Buscador() {
                   <CommandItem
                     key={product.id}
                     onSelect={() => {
-                      router.push(`/products/${product.id}`);
-                      setOpen(false);
-                      toast.success(
-                        `¡Encontramos ${product.nombre}! Ahora puedes verlo en detalle.`,
-                      ); // Cierra el diálogo después de la selección
+                      runCommand(() => router.push(`/products/${product.id}`));
                     }}
                     className="flex cursor-pointer items-center gap-2"
                   >
