@@ -15,9 +15,9 @@ export function MenuHeader() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button className="flex flex-col items-center justify-center border-none bg-transparent px-0 py-0 font-normal text-white hover:bg-transparent">
-          <FiMenu className="size-6" />
-          <p className="text-[9px]">Menú</p>
+        <Button className="hidden flex-col items-center justify-center border-none bg-transparent px-0 py-0 font-normal text-marusColor-letras hover:bg-transparent">
+          <FiMenu className="size-5" />
+          <p className="text-[7px] leading-none">Menú</p>
         </Button>
       </SheetTrigger>
       <SheetContent side="left">

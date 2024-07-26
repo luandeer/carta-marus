@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
-import { BannerDomicilio, Header, TailwindIndicator } from "@/components";
-import { cn } from "@/lib/utils"
-import ProviderBarraAdmi from "@/context/ProviderBarraAdmi";
+import { BannerDomicilio, TailwindIndicator } from "@/components";
+import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
+import { Header } from "@/lib/common/components";
+import { TopLoader } from "@/lib/common/components/progressBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,21 +21,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(
-        "bg-background antialiased min-h-screen flex flex-col",
-        inter.className
-      )}>
-        <BannerDomicilio/>
+      <body
+        className={cn(
+          "flex min-h-screen flex-col bg-background antialiased",
+          inter.className,
+        )}
+      >
+        <TopLoader />
+        <BannerDomicilio />
         <Header />
-        <div className="bg-marusColor-fondoClaro flex-1">
-          
-          
-          <div className="md:pb-10"><ProviderBarraAdmi>{children}</ProviderBarraAdmi></div>
+        <div className="flex-1 bg-marusColor-fondoClaro">
+          <div className="md:pb-10">{children}</div>
         </div>
 
-
         <TailwindIndicator />
-        <Toaster richColors closeButton/>
+        <Toaster richColors closeButton />
       </body>
     </html>
   );

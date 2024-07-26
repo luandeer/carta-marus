@@ -1,12 +1,21 @@
-"use client"
-import { useRouter } from 'next-nprogress-bar';
-import { Button } from "@/components/ui/button"
+"use client";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 import { IoArrowBack } from "react-icons/io5";
 
 export function BotonRegresar() {
-    const router = useRouter();
+  const router = useRouter();
 
   return (
-    <Button variant="link" className="p-0 flex items-center h-8 text-xs gap-1 text-dashboard-fondo" onClick={() => { router.back()}}><IoArrowBack size={15}/>Volver</Button>
+    <Button
+      variant="link"
+      className="text-dashboard-fondo flex h-8 items-center gap-1 p-0 text-xs"
+      onClick={() => {
+        router.back();
+      }}
+    >
+      <IoArrowBack size={15} />
+      Volver
+    </Button>
   );
 }

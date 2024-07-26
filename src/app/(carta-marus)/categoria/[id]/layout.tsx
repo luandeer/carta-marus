@@ -9,7 +9,7 @@ export default function LayoutCategorias({
   return (
     <div>
       <TitleCategorias />
-      <div className="sticky top-[60px] z-20 mb-2 bg-[#FAF6ED] shadow-lg">
+      <div className="sticky top-[60px] z-20 mb-2 bg-marusColor-fondoClaro transition-transform duration-200 ease-in-out">
         <NavCategorias />
       </div>
       <div className="container px-1.5 pt-2">{children}</div>
