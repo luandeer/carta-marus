@@ -1,8 +1,8 @@
-import Image from "next/image";
-import { Buscador } from "./buscador";
-import { Cart } from "./cart";
-import { MenuHeader } from "./menu";
-import Link from "next/link";
+import Image from 'next/image'
+import { Buscador } from './buscador'
+import { Cart } from './cart'
+import { MenuHeader } from './menu'
+import Link from 'next/link'
 
 export function Header() {
   return (
@@ -30,5 +30,5 @@ export function Header() {
         </div>
       </div>
     </div>
-  );
+  )
 }

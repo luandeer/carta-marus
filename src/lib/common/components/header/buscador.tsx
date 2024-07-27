@@ -1,7 +1,7 @@
-"use client";
-import * as React from "react";
-import { Button } from "@/components/ui/button";
-import { SearchIcon } from "lucide-react";
+'use client'
+import * as React from 'react'
+import { Button } from '@/components/ui/button'
+import { SearchIcon } from 'lucide-react'
 
 import {
   CommandDialog,
@@ -10,35 +10,35 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
-} from "@/components/ui/command";
-import { useGetProductsMarus } from "../../hooks/cliente-get-products-marus";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { toast } from "sonner";
+  CommandSeparator
+} from '@/components/ui/command'
+import { useGetProductsMarus } from '../../hooks/cliente-get-products-marus'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
+import { toast } from 'sonner'
 
 export function Buscador() {
-  const [open, setOpen] = React.useState(false);
-  const { products } = useGetProductsMarus();
+  const [open, setOpen] = React.useState(false)
+  const { products } = useGetProductsMarus()
   function handleSearch() {
-    setOpen((open) => !open);
+    setOpen((open) => !open)
   }
-  const router = useRouter();
+  const router = useRouter()
 
   // Agrupar productos por categoría
   const groupedProducts = products.reduce((acc: any, product: any) => {
     if (!acc[product.categoria]) {
-      acc[product.categoria] = [];
+      acc[product.categoria] = []
     }
-    acc[product.categoria].push(product);
-    return acc;
-  }, {});
+    acc[product.categoria].push(product)
+    return acc
+  }, {})
 
   const runCommand = React.useCallback((command: () => unknown) => {
-    setOpen(false);
+    setOpen(false)
     //se puede pasar funciones
-    command();
-  }, []);
+    command()
+  }, [])
   return (
     <>
       <Button
@@ -58,7 +58,7 @@ export function Buscador() {
                   <CommandItem
                     key={product.id}
                     onSelect={() => {
-                      runCommand(() => router.push(`/products/${product.id}`));
+                      runCommand(() => router.push(`/products/${product.id}`))
                     }}
                     className="flex cursor-pointer items-center gap-2"
                   >
@@ -79,5 +79,5 @@ export function Buscador() {
         </CommandList>
       </CommandDialog>
     </>
-  );
+  )
 }

@@ -1,10 +1,10 @@
-import { NavCategorias, TitleCategorias } from "@/components";
+import { NavCategorias, TitleCategorias } from '@/components'
 
 //lrc para crear layout (comando atajo)
 export default function LayoutCategorias({
-  children,
+  children
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <div>
@@ -14,5 +14,5 @@ export default function LayoutCategorias({
       </div>
       <div className="container px-1.5 pt-2">{children}</div>
     </div>
-  );
+  )
 }
