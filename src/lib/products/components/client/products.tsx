@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { MdDeliveryDining } from 'react-icons/md'
-import { FiltroSelect } from './filtroSelect'
+import { FiltroSelect } from '../server/filtroSelect'
 import { useState } from 'react'
 export function Products({ dataProductos, categoria }: any) {
   const [sortOption, setSortOption] = useState('default') // Para demostración; si no quieres usar estado, usa un método alternativo
@@ -29,7 +29,7 @@ export function Products({ dataProductos, categoria }: any) {
             ({dataProductos.length} platos)
           </span>
         </div>
-        <FiltroSelect sortOption={sortOption} setSortOption={setSortOption} />
+        <FiltroSelect setSortOption={setSortOption} />
       </div>
       <section className="grid grid-cols-2 gap-x-1.5 gap-y-1.5 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {sortedProducts.map((producto: any) => {

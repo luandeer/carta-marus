@@ -1,6 +1,6 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+'use client'
+import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 import {
   Sheet,
   SheetClose,
@@ -9,33 +9,22 @@ import {
   SheetFooter,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { useCartStore } from "@/store";
-import Image from "next/image";
-import { MdDeleteOutline } from "react-icons/md";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { Separator } from "@/components/ui/separator";
-import { ShoppingCartIcon } from "lucide-react";
+  SheetTrigger
+} from '@/components/ui/sheet'
+import { useCartStore } from '@/store'
+import Image from 'next/image'
+import { MdDeleteOutline } from 'react-icons/md'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { Separator } from '@/components/ui/separator'
+import { ShoppingCartIcon } from 'lucide-react'
 export function Cart() {
-  const {
-    cartItems,
-    isCartOpen,
-    toggleCart,
-    removeFromCart,
-    decreaseQuantity,
-    increaseQuantity,
-  } = useCartStore();
+  const { cartItems, isCartOpen, toggleCart, removeFromCart, decreaseQuantity, increaseQuantity } =
+    useCartStore()
 
   const handleCloseAutoFocus = (event: any) => {
     // esta funcion sirve para que cuando se cierra el modal, se mantenga en su posicion
-    event.preventDefault();
-  };
+    event.preventDefault()
+  }
 
   return (
     <Sheet open={isCartOpen} onOpenChange={toggleCart}>
@@ -49,17 +38,12 @@ export function Cart() {
           )}
         </Button>
       </SheetTrigger>
-      <SheetContent
-        onCloseAutoFocus={handleCloseAutoFocus}
-        className="w-full bg-[#FAF6ED]"
-      >
+      <SheetContent onCloseAutoFocus={handleCloseAutoFocus} className="bg-[#FAF6ED]">
         <SheetHeader className="items-start text-start">
           <SheetTitle>
-            Carrito de Compras{" "}
+            Carrito de Compras{' '}
             {cartItems.length > 0 && (
-              <span className="size-3 text-marusColor-marron">
-                ({cartItems.length})
-              </span>
+              <span className="size-3 text-marusColor-marron">({cartItems.length})</span>
             )}
           </SheetTitle>
           <SheetDescription>
@@ -70,25 +54,20 @@ export function Cart() {
         <div className="grid gap-4 py-4">
           {cartItems.length > 0 ? (
             cartItems.map((item: any, index: any) => (
-              <div
-                key={item.id}
-                className="flex items-center justify-between gap-2"
-              >
+              <div key={item.id} className="flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
                   <div className="flex flex-col items-center justify-center gap-1">
                     <button
                       onClick={() => increaseQuantity(item.id)}
                       className={cn(
-                        "flex h-6 w-6 cursor-pointer items-center justify-center rounded-lg bg-marusColor-anaranjado p-1 text-lg text-marusColor-marron transition-colors duration-300 ease-in-out",
+                        'flex h-6 w-6 cursor-pointer items-center justify-center rounded-lg bg-marusColor-anaranjado p-1 text-lg text-marusColor-marron transition-colors duration-300 ease-in-out',
                         {
-                          "bg-gray-300 text-gray-500": item.quantity >= 15,
-                        },
+                          'bg-gray-300 text-gray-500': item.quantity >= 15
+                        }
                       )}
-                      disabled={
-                        item.quantity === 15 || item.isLoading === "increase"
-                      }
+                      disabled={item.quantity === 15 || item.isLoading === 'increase'}
                     >
-                      {item.isLoading === "increase" ? (
+                      {item.isLoading === 'increase' ? (
                         <span className="flex h-full w-full items-center justify-center text-center text-white transition duration-200 ease-in">
                           <svg
                             width="18"
@@ -102,23 +81,21 @@ export function Cart() {
                           </svg>
                         </span>
                       ) : (
-                        "+"
+                        '+'
                       )}
                     </button>
                     <span className="text-xs font-medium">{item.quantity}</span>
                     <button
                       onClick={() => decreaseQuantity(item.id)}
                       className={cn(
-                        "flex h-6 w-6 cursor-pointer items-center justify-center rounded-lg bg-marusColor-anaranjado p-1 text-lg text-marusColor-marron transition-colors duration-300 ease-in-out",
+                        'flex h-6 w-6 cursor-pointer items-center justify-center rounded-lg bg-marusColor-anaranjado p-1 text-lg text-marusColor-marron transition-colors duration-300 ease-in-out',
                         {
-                          "bg-gray-300 text-gray-500": item.quantity <= 1,
-                        },
+                          'bg-gray-300 text-gray-500': item.quantity <= 1
+                        }
                       )}
-                      disabled={
-                        item.quantity === 1 || item.isLoading === "decrease"
-                      }
+                      disabled={item.quantity === 1 || item.isLoading === 'decrease'}
                     >
-                      {item.isLoading === "decrease" ? (
+                      {item.isLoading === 'decrease' ? (
                         <span className="flex h-full w-full items-center justify-center text-center text-white transition duration-200 ease-in">
                           <svg
                             width="18"
@@ -132,7 +109,7 @@ export function Cart() {
                           </svg>
                         </span>
                       ) : (
-                        "-"
+                        '-'
                       )}
                     </button>
                   </div>
@@ -153,7 +130,7 @@ export function Cart() {
                   <Tooltip delayDuration={0}>
                     <TooltipTrigger asChild>
                       <button onClick={() => removeFromCart(item.id)}>
-                        {item.isLoading === "remove" ? (
+                        {item.isLoading === 'remove' ? (
                           <span className="flex h-full w-full items-center justify-center text-center text-red-500 transition duration-200 ease-in">
                             <svg
                               width="20"
@@ -185,9 +162,7 @@ export function Cart() {
           ) : (
             <div className="flex flex-col items-center justify-center gap-2 text-center">
               <ShoppingCartIcon className="h-12 w-12 text-muted-foreground" />
-              <h2 className="text-base font-bold">
-                No hay productos agregados
-              </h2>
+              <h2 className="text-base font-bold">No hay productos agregados</h2>
               <p className="text-sm text-muted-foreground">
                 Agrega algunos productos a tu carrito para comenzar.
               </p>
@@ -202,5 +177,5 @@ export function Cart() {
         </SheetFooter>
       </SheetContent>
     </Sheet>
-  );
+  )
 }

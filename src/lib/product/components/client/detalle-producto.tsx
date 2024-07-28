@@ -1,48 +1,46 @@
-"use client";
-import * as React from "react";
-import { Separator } from "@/components/ui/separator";
-import Link from "next/link";
+'use client'
+import * as React from 'react'
+import { Separator } from '@/components/ui/separator'
+import Link from 'next/link'
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import { BotonRegresar } from "@/components";
-import { FaHome } from "react-icons/fa";
-import { MdDeliveryDining } from "react-icons/md";
-import { GrMoney } from "react-icons/gr";
-import { Button } from "@/components/ui/button";
-import { useCartStore } from "@/store";
-import { CarruselImagenes, CarruselMovil } from "@/lib/product/components";
-import { ShoppingCartIcon } from "lucide-react";
+  BreadcrumbSeparator
+} from '@/components/ui/breadcrumb'
+import { BotonRegresar } from '@/components'
+import { FaHome } from 'react-icons/fa'
+import { MdDeliveryDining } from 'react-icons/md'
+import { GrMoney } from 'react-icons/gr'
+import { Button } from '@/components/ui/button'
+import { useCartStore } from '@/store'
+import { CarruselImagenes, CarruselMovil } from '@/lib/product/components'
+import { ShoppingCartIcon } from 'lucide-react'
 
 export function DetalleProducto({ dataProducto }: any) {
   const { addToCart, cartItems } = useCartStore((state) => ({
     addToCart: state.addToCart,
-    cartItems: state.cartItems,
-  }));
+    cartItems: state.cartItems
+  }))
 
-  const itemLoading = cartItems.find(
-    (item) => item.id === dataProducto.id,
-  )?.isLoading;
+  const itemLoading = cartItems.find((item) => item.id === dataProducto.id)?.isLoading
 
   //son variables para el carrusel
-  const OPTIONS: any = {};
-  const SLIDES = dataProducto.imagenes[0]?.urls;
+  const OPTIONS: any = {}
+  const SLIDES = dataProducto.imagenes[0]?.urls
 
   const handleAddToCart = (item: any) => {
-    const { nombre, descuento, precio, id, imagenes } = item;
+    const { nombre, descuento, precio, id, imagenes } = item
     addToCart({
       id: id,
       descuento: descuento,
       name: nombre,
       price: precio,
-      imagen: imagenes?.[0]?.urls?.[0],
-    });
-  };
+      imagen: imagenes?.[0]?.urls?.[0]
+    })
+  }
 
   return (
     <section className="container px-0 pt-3 lg:px-2">
@@ -52,10 +50,7 @@ export function DetalleProducto({ dataProducto }: any) {
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
-                <Link
-                  href="/"
-                  className="text-marusColor-marron hover:text-yellow-900"
-                >
+                <Link href="/" className="text-marusColor-marron hover:text-yellow-900">
                   <FaHome size={14} />
                 </Link>
               </BreadcrumbLink>
@@ -94,7 +89,7 @@ export function DetalleProducto({ dataProducto }: any) {
             </div>
           </div>
 
-          <div className="mt-6 px-2 sm:mt-4 lg:mt-0">
+          <div className="mt-6 px-4 sm:mt-4 lg:mt-0">
             {dataProducto.nuevoProducto && (
               <div className="mb-3 flex items-center gap-2">
                 <span className="rounded-br-lg rounded-tl-lg bg-gradient-to-r from-lime-400 to-lime-500 px-2 py-1 text-xs capitalize text-white">
@@ -107,14 +102,13 @@ export function DetalleProducto({ dataProducto }: any) {
                 </div>
               </div>
             )}
-            {!dataProducto.nuevoProducto &&
-              (dataProducto.descuento || !dataProducto.descuento) && (
-                <div className="mb-3 flex w-min items-center gap-1 whitespace-nowrap rounded-br-lg rounded-tl-lg bg-marusColor-anaranjado px-2 py-1 text-xs capitalize text-white">
-                  <MdDeliveryDining className="size-4" />
+            {!dataProducto.nuevoProducto && (dataProducto.descuento || !dataProducto.descuento) && (
+              <div className="mb-3 flex w-min items-center gap-1 whitespace-nowrap rounded-br-lg rounded-tl-lg bg-marusColor-anaranjado px-2 py-1 text-xs capitalize text-white">
+                <MdDeliveryDining className="size-4" />
 
-                  <p>Delivery</p>
-                </div>
-              )}
+                <p>Delivery</p>
+              </div>
+            )}
 
             <h1 className="mb-1 text-xl font-bold text-marusColor-marron dark:text-white sm:text-2xl">
               {dataProducto.nombre}
@@ -127,22 +121,18 @@ export function DetalleProducto({ dataProducto }: any) {
             <div className="mt-4 flex flex-row-reverse items-center justify-between sm:gap-4">
               <div className="flex items-center gap-2">
                 <GrMoney className="size-4" />
-                <p className="text-sm text-marusColor-marron dark:text-gray-400">
-                  Precio online
-                </p>
+                <p className="text-sm text-marusColor-marron dark:text-gray-400">Precio online</p>
               </div>
 
               {dataProducto.descuento && (
                 <div className="flex items-center gap-x-2 py-1">
                   <span className="text-lg font-medium">
-                    {" "}
+                    {' '}
                     S/
                     {(
                       parseFloat(dataProducto.precio) -
-                      (parseFloat(dataProducto.precio) *
-                        parseFloat(dataProducto.descuento)) /
-                        100
-                    ).toFixed(2)}{" "}
+                      (parseFloat(dataProducto.precio) * parseFloat(dataProducto.descuento)) / 100
+                    ).toFixed(2)}{' '}
                   </span>
                   <span className="w-min whitespace-nowrap rounded-lg bg-marusColor-rojo px-2 py-0.5 text-xs text-white">
                     -{dataProducto.descuento}%
@@ -186,7 +176,7 @@ export function DetalleProducto({ dataProducto }: any) {
                 className="hover:text-primary-700 flex h-9 w-full items-center justify-center rounded-xl border border-gray-200 bg-marusColor-rojo px-5 text-sm font-medium text-marusColor-letras hover:bg-marusColor-rojo focus:z-10 focus:outline-none"
                 onClick={() => handleAddToCart(dataProducto)}
               >
-                {itemLoading === "add" ? (
+                {itemLoading === 'add' ? (
                   <span className="flex w-full items-center justify-center text-center text-white transition duration-200 ease-in">
                     <svg
                       width="18"
@@ -213,9 +203,7 @@ export function DetalleProducto({ dataProducto }: any) {
               <>
                 <Separator className="my-6 bg-marusColor-marron" />
 
-                <h1 className="mb-2 text-lg font-semibold">
-                  ¿Qué incluye este producto?
-                </h1>
+                <h1 className="mb-2 text-lg font-semibold">¿Qué incluye este producto?</h1>
                 <p className="mb-6 text-marusColor-marron dark:text-gray-400">
                   {dataProducto.descripcion}
                 </p>
@@ -225,5 +213,5 @@ export function DetalleProducto({ dataProducto }: any) {
         </div>
       </div>
     </section>
-  );
+  )
 }

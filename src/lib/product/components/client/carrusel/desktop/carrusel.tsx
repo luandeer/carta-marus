@@ -1,9 +1,9 @@
-"use client"
+'use client'
 import React, { useState, useEffect, useCallback } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import { Thumb } from './EmblaCarouselThumbsButton'
 import Fade from 'embla-carousel-fade'
-import "@/styles/embla.css"
+import '@/styles/embla.css'
 import Image from 'next/image'
 type PropType = {
   slides: number[]
@@ -43,14 +43,14 @@ export const CarruselImagenes: React.FC<PropType> = (props) => {
   return (
     <div className="embla">
       <div className="embla__viewport rounded-xl" ref={emblaMainRef}>
-        <div className="embla__container ">
+        <div className="embla__container">
           {slides?.map((slide, index) => (
             <div className="embla__slide" key={index}>
               <div className="embla__slide__number">
                 <Image
-                  className="w-full h-full rounded-xl max-w-full  object-contain"
+                  className="h-full w-full max-w-full rounded-xl object-contain"
                   src={`${slide}`}
-                  alt=""
+                  alt="imagen del producto"
                   width="1000"
                   height="1000"
                 />
@@ -77,4 +77,3 @@ export const CarruselImagenes: React.FC<PropType> = (props) => {
     </div>
   )
 }
-

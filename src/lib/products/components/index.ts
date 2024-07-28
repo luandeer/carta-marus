@@ -1,1 +1,1 @@
-export * from './server/products';
+export * from './client/products'
