@@ -14,16 +14,16 @@ export const FiltroSelect = ({ setSortOption }: any) => {
         setSortOption(value)
       }}
     >
-      <SelectTrigger className="h-0 w-[125px] rounded-xl border border-marusColor-marron/10 bg-marusColor-anaranjado px-3 py-2.5 text-xs text-white">
+      <SelectTrigger className="h-0 w-[125px] rounded-xl border border-marusColor-marron/10 bg-marusColor-anaranjado px-3 py-2.5 text-sm text-white">
         <SelectValue placeholder="ordenar por" />
       </SelectTrigger>
       <SelectContent className="w-auto rounded-xl text-marusColor-marron">
         <SelectGroup>
-          <SelectLabel className="text-xs">Ordenar por:</SelectLabel>
-          <SelectItem className="text-xs" value="priceAsc">
+          <SelectLabel className="text-sm">Ordenar por:</SelectLabel>
+          <SelectItem className="text-sm" value="priceAsc">
             Menor precio
           </SelectItem>
-          <SelectItem className="text-xs" value="priceDesc">
+          <SelectItem className="text-sm" value="priceDesc">
             Mayor precio
           </SelectItem>
         </SelectGroup>

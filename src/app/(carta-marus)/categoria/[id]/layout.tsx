@@ -18,7 +18,7 @@ export default function LayoutCategorias({
           <NavCategorias />
         </div>
       </div>
-      <div className="container px-1.5 pt-2">{children}</div>
+      <div className="container px-1.5 py-2">{children}</div>
     </div>
   )
 }
