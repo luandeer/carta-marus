@@ -17,16 +17,19 @@ import { GrMoney } from 'react-icons/gr'
 import { Button } from '@/components/ui/button'
 import { useCartStore } from '@/store'
 import { CarruselImagenes, CarruselMovil } from '@/lib/product/components'
-import { ShoppingCartIcon } from 'lucide-react'
+import { BsCartCheck, BsCartDash, BsCartPlus } from 'react-icons/bs'
 
 export function DetalleProducto({ dataProducto }: any) {
-  const { addToCart, cartItems } = useCartStore((state) => ({
+  const { addToCart, removeFromCart, cartItems } = useCartStore((state) => ({
     addToCart: state.addToCart,
+    removeFromCart: state.removeFromCart,
     cartItems: state.cartItems
   }))
-
-  const itemLoading = cartItems.find((item) => item.id === dataProducto.id)?.isLoading
-
+  const [isInCart, setIsInCart] = React.useState(false)
+  React.useEffect(() => {
+    const itemInCart = cartItems.find((item) => item.id === dataProducto.id)
+    setIsInCart(!!itemInCart)
+  }, [cartItems, dataProducto.id])
   //son variables para el carrusel
   const OPTIONS: any = {}
   const SLIDES = dataProducto.imagenes[0]?.urls
@@ -40,6 +43,12 @@ export function DetalleProducto({ dataProducto }: any) {
       price: precio,
       imagen: imagenes?.[0]?.urls?.[0]
     })
+    setIsInCart(true)
+  }
+
+  const handleRemoveFromCart = (itemId: any) => {
+    removeFromCart(itemId)
+    setIsInCart(false)
   }
 
   return (
@@ -153,7 +162,7 @@ export function DetalleProducto({ dataProducto }: any) {
             )}
 
             <div className="mt-6 space-y-3 sm:flex sm:items-center sm:justify-between sm:gap-4 sm:space-y-0">
-              <div className="hidden w-full items-center gap-3 text-lg font-medium">
+              {/* <div className="hidden w-full items-center gap-3 text-lg font-medium">
                 <h1 className="text-sm">Cantidad:</h1>
                 <Button
                   size="icon"
@@ -170,29 +179,22 @@ export function DetalleProducto({ dataProducto }: any) {
                 >
                   +
                 </Button>
-              </div>
+              </div> */}
 
               <Button
                 className="hover:text-primary-700 flex h-9 w-full items-center justify-center rounded-xl border border-gray-200 bg-marusColor-rojo px-5 text-sm font-medium text-marusColor-letras hover:bg-marusColor-rojo focus:z-10 focus:outline-none"
-                onClick={() => handleAddToCart(dataProducto)}
+                onClick={() =>
+                  isInCart ? handleRemoveFromCart(dataProducto.id) : handleAddToCart(dataProducto)
+                }
               >
-                {itemLoading === 'add' ? (
-                  <span className="flex w-full items-center justify-center text-center text-white transition duration-200 ease-in">
-                    <svg
-                      width="18"
-                      height="18"
-                      fill="currentColor"
-                      className="mr-2 animate-spin"
-                      viewBox="0 0 1792 1792"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z"></path>
-                    </svg>
-                    Agregando
-                  </span>
+                {isInCart ? (
+                  <>
+                    <BsCartDash size={20} className="mr-2" />
+                    Quitar del carrito
+                  </>
                 ) : (
                   <>
-                    <ShoppingCartIcon size={20} className="mr-2" />
+                    <BsCartPlus size={20} className="mr-2" />
                     Agregar al carrito
                   </>
                 )}
