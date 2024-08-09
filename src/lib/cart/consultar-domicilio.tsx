@@ -19,7 +19,7 @@ import { toast } from '@/components/ui/use-toast'
 
 const FormSchema = z.object({
   pin: z.string().min(9, {
-    message: 'Your one-time password must be 9 characters.'
+    message: 'Necesitas escribir 9 caractéres.'
   })
 })
 
@@ -50,31 +50,32 @@ export function ConsultarDomicilio() {
           name="pin"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Agregue su domicilio</FormLabel>
+              <FormLabel className="font-normal text-muted-foreground">
+                Busque su domicilio con su número de celular...
+              </FormLabel>
               <FormControl>
                 <InputOTP maxLength={9} {...field}>
                   <InputOTPGroup>
-                    <InputOTPSlot index={0} />
-                    <InputOTPSlot index={1} />
-                    <InputOTPSlot index={2} />
-                    <InputOTPSlot index={3} />
-                    <InputOTPSlot index={4} />
-                    <InputOTPSlot index={5} />
-                    <InputOTPSlot index={6} />
-                    <InputOTPSlot index={7} />
-                    <InputOTPSlot index={8} />
+                    <InputOTPSlot index={0} className="w-8" />
+                    <InputOTPSlot index={1} className="w-8" />
+                    <InputOTPSlot index={2} className="w-8" />
+                    <InputOTPSlot index={3} className="w-8" />
+                    <InputOTPSlot index={4} className="w-8" />
+                    <InputOTPSlot index={5} className="w-8" />
+                    <InputOTPSlot index={6} className="w-8" />
+                    <InputOTPSlot index={7} className="w-8" />
+                    <InputOTPSlot index={8} className="w-8" />
                   </InputOTPGroup>
                 </InputOTP>
               </FormControl>
-              <FormDescription>
-                Escriba su numero de celular para consultar su domicilio
-              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
 
-        <Button type="submit">Submit</Button>
+        <Button type="submit" className="h-7">
+          Buscar
+        </Button>
       </form>
     </Form>
   )
