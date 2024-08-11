@@ -11,40 +11,34 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 import { Separator } from '@/components/ui/separator'
 export const EnviarOrden = () => {
   return (
-    <Card>
-      <CardHeader className="flex flex-row items-start bg-muted/50">
-        <div className="grid gap-0.5">
-          <CardTitle className="group flex items-center gap-2 text-lg">Resumen de Pedido</CardTitle>
-          <CardDescription>Fecha: 9 de agosto de 2024</CardDescription>
-        </div>
-      </CardHeader>
-      <CardContent className="p-6 text-sm">
-        <div className="grid gap-3">
-          <div className="font-semibold">Platos Ordenados</div>
-          <ScrollArea className="h-16 w-full">
-            <ul className="grid gap-3">
-              <li className="flex items-center justify-between">
-                <span className="text-muted-foreground">
-                  Hamburguesa x <span>1</span>
-                </span>
-                <span>$10.00</span>
-              </li>
-              <li className="flex items-center justify-between">
-                <span className="text-muted-foreground">
-                  Pizza Margarita x <span>1</span>
-                </span>
-                <span>$15.00</span>
-              </li>
-              <li className="flex items-center justify-between">
-                <span className="text-muted-foreground">
-                  Ensalada César x <span>1</span>
-                </span>
-                <span>$8.00</span>
-              </li>
-            </ul>
-          </ScrollArea>
+    <div>
+      <div className="border-b-2 border-white bg-muted/50 px-4 py-1">
+        <h1 className="group flex items-center gap-2 text-base font-medium">Detalle del Pedido</h1>
+      </div>
+      <div className="bg-muted/50 p-4 text-sm">
+        <div className="grid gap-2">
+          <ul className="grid gap-1.5">
+            <li className="flex items-center justify-between">
+              <span className="text-muted-foreground">
+                Hamburguesa x <span>1</span>
+              </span>
+              <span>$10.00</span>
+            </li>
+            <li className="flex items-center justify-between">
+              <span className="text-muted-foreground">
+                Pizza Margarita x <span>1</span>
+              </span>
+              <span>$15.00</span>
+            </li>
+            <li className="flex items-center justify-between">
+              <span className="text-muted-foreground">
+                Ensalada César x <span>1</span>
+              </span>
+              <span>$8.00</span>
+            </li>
+          </ul>
           <Separator className="my-2" />
-          <ul className="grid gap-3">
+          <ul className="grid gap-1.5">
             <li className="flex items-center justify-between">
               <span className="text-muted-foreground">Subtotal</span>
               <span>$33.00</span>
@@ -59,11 +53,12 @@ export const EnviarOrden = () => {
             </li>
           </ul>
         </div>
-        <Separator className="my-4" />
-        <ScrollArea className="h-20 w-full">
+      </div>
+      <div className="border-t-2 border-white bg-muted/50 px-4 py-2">
+        <ScrollArea className="h-auto w-full">
           <div className="grid gap-3">
             <div className="font-semibold">Información del Cliente</div>
-            <dl className="grid gap-3">
+            <dl className="grid gap-3 text-sm">
               <div className="flex items-center justify-between">
                 <dt className="text-muted-foreground">Nombre</dt>
                 <dd>Juan Pérez</dd>
@@ -76,7 +71,7 @@ export const EnviarOrden = () => {
               </div>
               <div className="flex items-center justify-between">
                 <dt className="text-muted-foreground">Dirección</dt>
-                <dd>Calle Principal 123, Ciudad, Estado 12345</dd>
+                <dd className="text-end">Calle Principal 123, Ciudad</dd>
               </div>
               <div className="flex items-center justify-between">
                 <dt className="text-muted-foreground">Instrucciones</dt>
@@ -85,7 +80,7 @@ export const EnviarOrden = () => {
             </dl>
           </div>
         </ScrollArea>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   )
 }

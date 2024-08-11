@@ -7,7 +7,7 @@ const steps = [{ label: 'Paso 1' }, { label: 'Paso 2' }] satisfies StepItem[]
 
 export default function ProcesoCompra() {
   return (
-    <div className="flex w-full flex-col gap-4">
+    <div className="z-0 mb-10 flex w-full flex-col gap-4">
       <Stepper variant="circle" initialStep={0} steps={steps}>
         <Step label={steps[0].label}>
           <div className="my-2 h-full text-primary">
@@ -18,7 +18,7 @@ export default function ProcesoCompra() {
           </div>
         </Step>
         <Step label={steps[1].label}>
-          <div className="my-2 h-full text-primary">
+          <div className="my-2 text-primary">
             <h1 className="mb-2 text-sm font-semibold text-muted-foreground">
               Revise su orden y finalice la orden.{' '}
             </h1>
@@ -47,12 +47,12 @@ const Footer = () => {
     <>
       {hasCompletedAllSteps && (
         <div className="my-2 flex h-full items-center justify-center rounded-md border bg-secondary text-primary">
-          <h1 className="text-xl">Woohoo! All steps completed! 🎉</h1>
+          <h1 className="p-2 text-xl">Muy bien! Felicidades su compra ha terminado! 🎉</h1>
         </div>
       )}
       <div className="flex w-full justify-end gap-2">
         {hasCompletedAllSteps ? (
-          <Button size="sm" onClick={resetSteps}>
+          <Button size="sm" className="hidden" onClick={resetSteps}>
             Reiniciar
           </Button>
         ) : (

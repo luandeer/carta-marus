@@ -43,21 +43,22 @@ export function Cart() {
         </SheetTrigger>
         {/* bg-[#FAF6ED] */}
         <SheetContent className="w-full">
-          {!isCheckoutVisible && (
-            <>
-              <SheetHeader className="items-start text-start">
-                <SheetTitle>
-                  Carrito de Compras{' '}
-                  {cartItems.length > 0 && (
-                    <span className="size-3 text-marusColor-marron">({cartItems.length})</span>
-                  )}
-                </SheetTitle>
-                <SheetDescription>
-                  Aquí puedes revisar y modificar los artículos en tu carrito.
-                </SheetDescription>
-              </SheetHeader>
-              <Separator className="my-2" />
-              <ScrollArea className="h-4/6 w-full">
+          <ScrollArea className="h-full w-full pb-10 pr-3">
+            {!isCheckoutVisible && (
+              <>
+                <SheetHeader className="sticky top-0 items-start bg-white text-start">
+                  <SheetTitle>
+                    Carrito de Compras{' '}
+                    {cartItems.length > 0 && (
+                      <span className="size-3 text-marusColor-marron">({cartItems.length})</span>
+                    )}
+                  </SheetTitle>
+                  <SheetDescription>
+                    Aquí puedes revisar y modificar los artículos en tu carrito.
+                  </SheetDescription>
+                  <Separator className="my-2" />
+                </SheetHeader>
+
                 <div className="grid gap-4 py-4">
                   {cartItems.length > 0 ? (
                     cartItems.map((item: any, index: any) => (
@@ -131,31 +132,32 @@ export function Cart() {
                     </div>
                   )}
                 </div>
-              </ScrollArea>
-              <Separator className="my-2" />
-              <SheetFooter className="absolute bottom-5 left-0 w-full px-4">
-                <Button onClick={handleCheckout} className="w-full">
-                  Iniciar Compra
-                </Button>
-              </SheetFooter>
-            </>
-          )}
-          {isCheckoutVisible && (
-            <>
-              <SheetHeader className="mb-2 items-start text-start">
-                <SheetTitle>Proceso de Compra</SheetTitle>
-                <SheetDescription>completa estos dos pasos.</SheetDescription>
-              </SheetHeader>
+                <Separator className="my-2" />
+                <SheetFooter className="absolute bottom-0 left-0 z-50 w-full bg-white">
+                  <Button onClick={handleCheckout} className="w-full">
+                    Iniciar Compra
+                  </Button>
+                </SheetFooter>
+              </>
+            )}
+            {isCheckoutVisible && (
+              <>
+                <SheetHeader className="sticky top-0 z-10 mb-2 items-start bg-white text-start">
+                  <SheetTitle>Proceso de Compra</SheetTitle>
+                  <SheetDescription>completa estos dos pasos.</SheetDescription>
+                  <Separator className="my-2" />
+                </SheetHeader>
 
-              <ProcesoCompra />
+                <ProcesoCompra />
 
-              <SheetFooter className="absolute bottom-5 left-0 w-full px-4">
-                <Button onClick={() => setIsCheckoutVisible(false)} className="w-full">
-                  Regresar al carrito
-                </Button>
-              </SheetFooter>
-            </>
-          )}
+                <SheetFooter className="absolute bottom-0 left-0 z-50 w-full bg-white">
+                  <Button onClick={() => setIsCheckoutVisible(false)} className="w-full">
+                    Regresar al carrito
+                  </Button>
+                </SheetFooter>
+              </>
+            )}
+          </ScrollArea>
         </SheetContent>
       </Sheet>
     </>

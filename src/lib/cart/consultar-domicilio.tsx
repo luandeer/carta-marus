@@ -44,7 +44,7 @@ export function ConsultarDomicilio() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-auto space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-auto space-y-6 lg:px-1">
         <FormField
           control={form.control}
           name="pin"

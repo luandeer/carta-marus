@@ -1,5 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { ConsultarDomicilio } from './consultar-domicilio'
+import { RegistroDomicilio } from './registro-domicilio'
 
 export function TabsDomicilio() {
   return (
@@ -15,7 +16,9 @@ export function TabsDomicilio() {
       <TabsContent value="tab1">
         <ConsultarDomicilio />
       </TabsContent>
-      <TabsContent value="tab2">asds</TabsContent>
+      <TabsContent value="tab2">
+        <RegistroDomicilio />
+      </TabsContent>
     </Tabs>
   )
 }
