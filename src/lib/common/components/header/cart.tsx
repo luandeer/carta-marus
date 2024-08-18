@@ -13,21 +13,29 @@ import {
 } from '@/components/ui/sheet'
 import { useCartStore } from '@/store'
 import Image from 'next/image'
-import { MdDeleteOutline } from 'react-icons/md'
+import { MdDeleteOutline, MdDeliveryDining } from 'react-icons/md'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { Separator } from '@/components/ui/separator'
 import { ShoppingCartIcon } from 'lucide-react'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { useState } from 'react'
 import ProcesoCompra from '@/lib/cart/process'
+import { FaStore } from 'react-icons/fa6'
+import { EnviarOrden } from '@/lib/cart/paso2-orden'
 export function Cart() {
   const { cartItems, isCartOpen, toggleCart, removeFromCart, decreaseQuantity, increaseQuantity } =
     useCartStore()
   const [isCheckoutVisible, setIsCheckoutVisible] = useState(false)
+  const [deliveryOption, setDeliveryOption] = useState('') // Para almacenar la opción seleccionada
+
   const handleCheckout = () => {
     setIsCheckoutVisible(true)
+    setDeliveryOption('')
   }
 
+  const handleOptionSelect = (option: string) => {
+    setDeliveryOption(option)
+  }
   return (
     <>
       <Sheet open={isCartOpen} onOpenChange={toggleCart}>
@@ -140,7 +148,41 @@ export function Cart() {
                 </SheetFooter>
               </>
             )}
-            {isCheckoutVisible && (
+
+            {/* Opciones de entrega */}
+            {isCheckoutVisible && !deliveryOption && (
+              <>
+                <SheetHeader className="sticky top-0 z-10 mb-2 items-start bg-white text-start">
+                  <SheetTitle>¿Cómo prefieres recibir tu pedido?</SheetTitle>
+                  <SheetDescription>Selecciona una opción para continuar.</SheetDescription>
+                  <Separator className="my-2" />
+                </SheetHeader>
+
+                <div className="flex flex-col gap-4 p-4">
+                  <Button
+                    className="flex w-full items-center gap-2"
+                    onClick={() => handleOptionSelect('tienda')}
+                  >
+                    <FaStore className="size-5" />
+                    Recojo en Tienda
+                  </Button>
+                  <Button
+                    className="flex w-full items-center gap-2"
+                    onClick={() => handleOptionSelect('delivery')}
+                  >
+                    <MdDeliveryDining className="size-5" />
+                    Delivery
+                  </Button>
+                </div>
+
+                <SheetFooter className="absolute bottom-0 left-0 z-50 w-full bg-white">
+                  <Button onClick={() => setIsCheckoutVisible(false)} className="w-full">
+                    Regresar al carrito
+                  </Button>
+                </SheetFooter>
+              </>
+            )}
+            {isCheckoutVisible && deliveryOption === 'delivery' && (
               <>
                 <SheetHeader className="sticky top-0 z-10 mb-2 items-start bg-white text-start">
                   <SheetTitle>Proceso de Compra</SheetTitle>
@@ -149,6 +191,23 @@ export function Cart() {
                 </SheetHeader>
 
                 <ProcesoCompra />
+
+                <SheetFooter className="absolute bottom-0 left-0 z-50 w-full bg-white">
+                  <Button onClick={() => setIsCheckoutVisible(false)} className="w-full">
+                    Regresar al carrito
+                  </Button>
+                </SheetFooter>
+              </>
+            )}
+            {isCheckoutVisible && deliveryOption === 'tienda' && (
+              <>
+                <SheetHeader className="sticky top-0 z-10 mb-4 items-start bg-white text-start">
+                  <SheetTitle>Resumen de pedido</SheetTitle>
+                  <SheetDescription>Revise su pedido y envia la orden.</SheetDescription>
+                  <Separator className="my-2" />
+                </SheetHeader>
+
+                <EnviarOrden />
 
                 <SheetFooter className="absolute bottom-0 left-0 z-50 w-full bg-white">
                   <Button onClick={() => setIsCheckoutVisible(false)} className="w-full">

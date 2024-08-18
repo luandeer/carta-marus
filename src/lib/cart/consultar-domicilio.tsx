@@ -44,7 +44,7 @@ export function ConsultarDomicilio() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-auto space-y-6 lg:px-1">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-auto space-y-6">
         <FormField
           control={form.control}
           name="pin"
@@ -55,7 +55,7 @@ export function ConsultarDomicilio() {
               </FormLabel>
               <FormControl>
                 <InputOTP maxLength={9} {...field}>
-                  <InputOTPGroup>
+                  <InputOTPGroup className="pl-1">
                     <InputOTPSlot index={0} className="w-8" />
                     <InputOTPSlot index={1} className="w-8" />
                     <InputOTPSlot index={2} className="w-8" />
