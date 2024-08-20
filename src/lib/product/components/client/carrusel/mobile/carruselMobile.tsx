@@ -27,7 +27,7 @@ export const CarruselMovil: React.FC<PropType> = (props) => {
                 <Image
                   className="h-full w-full max-w-full object-contain"
                   src={`${slide}`}
-                  alt="imagen del producto"
+                  alt=""
                   width="1000"
                   height="1000"
                 />
@@ -41,8 +41,8 @@ export const CarruselMovil: React.FC<PropType> = (props) => {
               <DotButton
                 key={index}
                 onClick={() => onDotButtonClick(index)}
-                className={'size-2 rounded-full'.concat(
-                  index === selectedIndex ? 'bg-white' : 'bg-white/50'
+                className={'size-2 rounded-full border border-gray-100'.concat(
+                  index === selectedIndex ? 'border-gray-400 bg-white' : 'bg-white/50'
                 )}
               />
             ))}
