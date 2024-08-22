@@ -5,7 +5,6 @@ import Fade from 'embla-carousel-fade'
 import '@/styles/embla.css'
 
 import { DotButton, useDotButton } from './dotButon'
-import { NextButton, PrevButton, usePrevNextButtons } from './controls'
 type PropType = {
   slides: number[]
   options?: any
@@ -16,8 +15,7 @@ const BannerCarrusel: React.FC<PropType> = (props) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [Fade()])
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
-  const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } =
-    usePrevNextButtons(emblaApi)
+
   return (
     <div className="embla">
       <div className="embla__viewport" ref={emblaRef}>
@@ -25,7 +23,7 @@ const BannerCarrusel: React.FC<PropType> = (props) => {
           {slides.map((index) => (
             <div className="embla__slide" key={index}>
               <img
-                className="h-full w-full max-w-full rounded-xl object-contain"
+                className="h-32 w-full max-w-full rounded-xl object-cover"
                 src={`https://picsum.photos/600/350?v=${index}`}
                 alt="Your alt text"
               />
