@@ -10,7 +10,7 @@ import { ButtonAnimation } from '../ui/ButtonAnimation'
 export function Footer() {
   return (
     <footer className="border-t-4 border-marusColor-anaranjado bg-marusColor-marron">
-      <section className="px-6 py-6">
+      <div className="container px-6 py-6">
         <div className="grid gap-12 pb-2 text-marusColor-letras md:grid-cols-[1.5fr_0.5fr_0.5fr_0.5fr]">
           <div className="flex flex-col gap-6">
             <Link href="/" className="w-max">
@@ -67,7 +67,7 @@ export function Footer() {
             reservados. 2024-actualidad.
           </p>
         </div>
-      </section>
+      </div>
     </footer>
   )
 }

@@ -26,7 +26,7 @@ export default function RootLayout({
         <BannerDomicilio />
         <Header />
         <div className="flex-1 bg-marusColor-fondoClaro">
-          <div className="md:pb-10">{children}</div>
+          <div className="container px-6 md:pb-10">{children}</div>
         </div>
         <Footer />
         <TailwindIndicator />

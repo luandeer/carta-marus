@@ -3,11 +3,12 @@ import { Buscador } from './buscador'
 import { Cart } from './cart'
 import { MenuHeader } from './menu'
 import Link from 'next/link'
+import { NavLinks } from '@/components/header/NavLinks'
 
 export function Header() {
   return (
     <div className="sticky top-0 z-40 border-b-4 border-marusColor-anaranjado bg-marusColor-marron px-6 shadow-md">
-      <div className="relative flex items-center justify-between">
+      <div className="container relative flex items-center justify-between px-0">
         <div className="flex items-center">
           <MenuHeader />
           <Link href="/">
@@ -20,6 +21,9 @@ export function Header() {
               priority
             />
           </Link>
+        </div>
+        <div className="hidden lg:block">
+          <NavLinks />
         </div>
         <h1 className="absolute -bottom-3 left-1/2 hidden w-min -translate-x-1/2 transform whitespace-nowrap rounded-lg bg-marusColor-anaranjado px-2 text-sm font-semibold text-marusColor-marron shadow-lg">
           Carta Marus Brasa
